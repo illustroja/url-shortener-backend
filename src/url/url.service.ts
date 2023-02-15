@@ -1,12 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Url } from './schemas/url.schema';
 
-// interface Url {
-//   original_url: string;
-//   shortened_url: string;
-// }
 @Injectable()
 export class UrlService {
   constructor(
@@ -23,7 +20,6 @@ export class UrlService {
     // input: https://www.google.com/
     // output: goocom
     let short = '';
-    // const length_url =  Math.floor(url.length / 3);
     const arr_sub_strings = url.split('.');
     const temp_arr = [];
     for (const sub of arr_sub_strings) {
@@ -77,7 +73,6 @@ export class UrlService {
     return res;
   }
   async deleteUrl(id): Promise<Url> {
-    // const filter = { original_url: original_url };
     return await this.urlModel.findByIdAndDelete(id);
   }
 }
